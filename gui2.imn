@@ -9,8 +9,8 @@ node n1 {
 	!
     }
     canvas c1
-    iconcoords {828.0 422.0}
-    labelcoords {831.0 467.0}
+    iconcoords {1185.0 546.0}
+    labelcoords {1180.0 592.0}
     interface-peer {eth0 n2}
 }
 
@@ -28,8 +28,8 @@ node n2 {
 	!
     }
     canvas c1
-    iconcoords {813.0 239.0}
-    labelcoords {813.0 271.0}
+    iconcoords {1183.0 301.0}
+    labelcoords {1209.0 281.0}
     interface-peer {eth0 n1}
     interface-peer {eth1 n3}
     services {OSPFv2 OSPFv3 zebra IPForward}
@@ -52,8 +52,8 @@ node n3 {
 	!
     }
     canvas c1
-    iconcoords {701.0 344.0}
-    labelcoords {703.0 378.0}
+    iconcoords {992.0 400.0}
+    labelcoords {1010.0 439.0}
     interface-peer {eth0 n2}
     interface-peer {eth1 n4}
     interface-peer {eth2 n5}
@@ -73,8 +73,8 @@ node n4 {
 	!
     }
     canvas c1
-    iconcoords {614.0 218.0}
-    labelcoords {614.0 250.0}
+    iconcoords {786.0 254.0}
+    labelcoords {788.0 231.0}
     interface-peer {eth0 n3}
     interface-peer {eth1 n6}
 }
@@ -93,8 +93,8 @@ node n5 {
 	!
     }
     canvas c1
-    iconcoords {646.0 478.0}
-    labelcoords {646.0 510.0}
+    iconcoords {790.0 581.0}
+    labelcoords {789.0 618.0}
     interface-peer {eth0 n3}
     interface-peer {eth1 n6}
 }
@@ -116,8 +116,8 @@ node n6 {
 	!
     }
     canvas c1
-    iconcoords {522.0 340.0}
-    labelcoords {522.0 372.0}
+    iconcoords {579.0 399.0}
+    labelcoords {565.0 442.0}
     interface-peer {eth0 n5}
     interface-peer {eth1 n4}
     interface-peer {eth2 n7}
@@ -137,8 +137,8 @@ node n7 {
 	!
     }
     canvas c1
-    iconcoords {290.0 339.0}
-    labelcoords {290.0 371.0}
+    iconcoords {165.0 400.0}
+    labelcoords {167.0 376.0}
     interface-peer {eth0 n6}
     interface-peer {eth1 n8}
     services {OSPFv2 OSPFv3 zebra IPForward}
@@ -155,8 +155,8 @@ node n8 {
 	!
     }
     canvas c1
-    iconcoords {290.0 487.0}
-    labelcoords {290.0 519.0}
+    iconcoords {164.0 609.0}
+    labelcoords {164.0 641.0}
     interface-peer {eth0 n7}
 }
 
@@ -208,7 +208,7 @@ link l8 {
 }
 
 annotation a1 {
-    iconcoords {494 158 894 537}
+    iconcoords {519.0 80.0 1294.0 716.0}
     type oval
     label {Core Network}
     labelcolor black
@@ -221,7 +221,7 @@ annotation a1 {
 }
 
 annotation a2 {
-    iconcoords {258 280 501 398}
+    iconcoords {82.0 315.0 526.0 486.0}
     type rectangle
     label {Rede Acesso}
     labelcolor black
@@ -236,6 +236,9 @@ annotation a2 {
 
 canvas c1 {
     name {Canvas1}
+    refpt {0 0 47.5791667 -122.132322 2.0}
+    scale {150.0}
+    size {1600 800}
 }
 
 option global {
