@@ -1,0 +1,236 @@
+!
+! Last configuration change at 18:51:35 UTC Mon Apr 7 2025
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname PE1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+mpls traffic-eng tunnels
+!
+!
+!
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no shutdown
+ ip address 4.4.4.4 255.255.255.255
+!
+interface Tunnel1
+ no shutdown
+ ip unnumbered Loopback0
+ tunnel mode mpls traffic-eng
+ tunnel destination 12.12.12.12
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng priority 2 2
+ tunnel mpls traffic-eng bandwidth 200000
+ tunnel mpls traffic-eng path-option 1 explicit name CAMINHO1P12
+ tunnel mpls traffic-eng load-share 1
+ no routing dynamic
+ load-interval 30
+ ip load-sharing per-packet
+!
+interface Tunnel2
+ no shutdown
+ ip unnumbered Loopback0
+ tunnel mode mpls traffic-eng
+ tunnel destination 12.12.12.12
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng priority 2 2
+ tunnel mpls traffic-eng bandwidth 200000
+ tunnel mpls traffic-eng path-option 1 explicit name CAMINHO2P12
+ tunnel mpls traffic-eng load-share 1
+ no routing dynamic
+ load-interval 30
+ ip load-sharing per-packet
+!
+interface Tunnel3
+ no shutdown
+ ip unnumbered Loopback0
+ tunnel mode mpls traffic-eng
+ tunnel destination 11.11.11.11
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng priority 2 2
+ tunnel mpls traffic-eng bandwidth 200000
+ tunnel mpls traffic-eng path-option 1 explicit name CAMINHO1P13
+ tunnel mpls traffic-eng load-share 1
+ no routing dynamic
+ load-interval 30
+ ip load-sharing per-packet
+!
+interface Tunnel4
+ no shutdown
+ ip unnumbered Loopback0
+ tunnel mode mpls traffic-eng
+ tunnel destination 11.11.11.11
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng priority 2 2
+ tunnel mpls traffic-eng bandwidth 200000
+ tunnel mpls traffic-eng path-option 1 explicit name CAMINHO2P13
+ tunnel mpls traffic-eng load-share 1
+ no routing dynamic
+ load-interval 30
+ ip load-sharing per-packet
+!
+interface GigabitEthernet0/0
+ no shutdown
+ ip address 192.168.14.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no shutdown
+ ip address 192.168.45.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ mpls traffic-eng tunnels
+ mpls ip
+ ip rsvp bandwidth 800000
+!
+interface GigabitEthernet0/2
+ no shutdown
+ ip address 192.168.46.1 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+ mpls traffic-eng tunnels
+ mpls ip
+ ip rsvp bandwidth 800000
+!
+interface GigabitEthernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ mpls traffic-eng router-id Loopback0
+ mpls traffic-eng area 0
+ network 4.4.4.4 0.0.0.0 area 0
+ network 192.168.14.0 0.0.0.255 area 0
+ network 192.168.45.0 0.0.0.255 area 0
+ network 192.168.46.0 0.0.0.255 area 0
+ maximum-paths 2
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ip explicit-path name CAMINHO1P12 enable
+ next-address 5.5.5.5
+ next-address 8.8.8.8
+ next-address 12.12.12.12
+!
+ip explicit-path name CAMINHO2P12 enable
+ next-address 6.6.6.6
+ next-address 10.10.10.10
+ next-address 9.9.9.9
+ next-address 8.8.8.8
+ next-address 12.12.12.12
+!
+ip explicit-path name CAMINHO1P13 enable
+ next-address 5.5.5.5
+ next-address 8.8.8.8
+ next-address 11.11.11.11
+!
+ip explicit-path name CAMINHO2P13 enable
+ next-address 6.6.6.6
+ next-address 10.10.10.10
+ next-address 9.9.9.9
+ next-address 7.7.7.7
+ next-address 11.11.11.11
+!
+!
+!
+mpls ldp router-id Loopback0 force
+!
+control-plane
+!
+banner exec ^CCCCC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^CCCCC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^CCCCC
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end
