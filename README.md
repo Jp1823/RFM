@@ -1,8 +1,8 @@
-# RFM Project – Mobile and Physical Networks
+# RFM Project – Fixed and Mobile Networks
 
 This repository documents the work developed for the **RFM** course, part of the **RNG profile** in the 2nd semester at the **University of Minho**.
 
-The project is divided into **three phases**, each exploring a distinct area within the scope of **mobile and physical networks**.
+The project is divided into **three phases**, each exploring a distinct area within the scope of **fixed and mobile networks**.
 
 ---
 
