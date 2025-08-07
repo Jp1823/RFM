@@ -6,7 +6,7 @@ The project is divided into **three phases**, each exploring a distinct area wit
 
 ---
 
-## 📍 TP1 1 – Access Technologies and Packet Analysis with CORE
+## 📍 TP 1 – Access Technologies and Packet Analysis with CORE
 
 In the first phase, we were tasked with selecting and evaluating one access technology, from among several, to be integrated into a test topology.
 
